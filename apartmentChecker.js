@@ -1,12 +1,18 @@
 const puppeteer = require("puppeteer");
 const Pushover = require("pushover-notifications");
 
+// Declare the currentTime variable outside of the callback function
+let currentTime;
+
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
   await page.goto("https://www.wbm.de/wohnungen-berlin/angebote/");
   await new Promise((r) => setTimeout(r, 5000));
+
+  // Get the current date and time
+  currentTime = new Date().toLocaleString();
 
   const currentContent = await page.content();
 
