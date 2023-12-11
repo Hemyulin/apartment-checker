@@ -59,8 +59,9 @@ const main = async () => {
 const sendNotification = (message, currentTime) => {
   try {
     const push = new Pushover({
-      user: "u5kxerjg7kb362z3prsw758jzsedx2",
-      token: "akup91m9ztbe4aku4wxt44ummcwejw",
+// Add user and token from .env file
+      user: process.env.PUSHOVER_USER,
+      token: process.env.PUSHOVER_TOKEN,
     });
 
     const notification = {
