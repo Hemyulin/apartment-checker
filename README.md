@@ -23,7 +23,7 @@ Additionally, you will need:
 To start the application, run:
 
 ```bash
-node app.js
+node apartmentChecker.js
 
 This will initiate the scraping process, and you will begin to receive notifications for new apartment listings.
 
