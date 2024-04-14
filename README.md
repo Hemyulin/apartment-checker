@@ -1,6 +1,6 @@
 # Apartment Checker
 
-Apartment Checker is a JavaScript-based application designed to automatically scrape the WBM website for new apartment listings every 7 minutes. 
+Apartment Checker is a JavaScript-based application designed to automatically scrape the [WBM Website](https://www.wbm.de) for new apartment listings every 7 minutes. 
 Using the Pushover service, it sends real-time notifications to your phone, helping you stay ahead in the competitive apartment hunting process.
 
 ## Features
