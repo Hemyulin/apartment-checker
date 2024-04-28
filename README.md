@@ -1,33 +1,31 @@
-# Apartment Checker
+# Apartment Monitoring Script
 
-Apartment Checker is a JavaScript-based application designed to automatically scrape the [WBM Website](https://www.wbm.de) for new apartment listings every 7 minutes. 
-Using the Pushover service, it sends real-time notifications to your phone, helping you stay ahead in the competitive apartment hunting process.
+This script continuously monitors the "WBM Wohnungen Berlin" website for new apartment listings. When a new listing is detected, it sends a notification through Pushover to the configured user.
 
 ## Features
 
-- **Automated Scraping**: Constant monitoring of the WBM website every 7 minutes to detect new apartment listings.
-- **Real-Time Notifications**: Immediate alerts sent via Pushover directly to your mobile device upon the detection of new listings.
-- **User-Friendly**: Simple setup and minimal configuration required to start receiving updates.
+- Monitors apartment listings at scheduled intervals.
+- Logs status updates and errors to the console.
+- Sends push notifications when new apartments are available.
+- Prevents duplicate notifications for the same apartment listing.
+
+## Screenshot 1
+
+![Screenshot of Application](public/screenshot.jpeg)
+
+## Screenshot 2
+
+![Screenshot of Application](public/screenshot2.jpeg)
 
 ## Prerequisites
 
-Before you begin, ensure you have the following installed:
 - Node.js
-- npm (Node Package Manager)
+- Puppeteer
+- Pushover account for notification delivery
 
-Additionally, you will need:
-- A Pushover account to receive push notifications ([Sign up here](https://pushover.net/))
-- 
-## Usage
+## Set up environment variables:
 
-To start the application, run:
+Create a .env file in the root directory and add your Pushover user key and API token:
 
-```bash
-node apartmentChecker.js
-
-This will initiate the scraping process, and you will begin to receive notifications for new apartment listings.
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create.
-Any contributions you make are **greatly appreciated**.
+PUSHOVER_USER=your_pushover_user_key
+PUSHOVER_TOKEN=your_pushover_api_token
