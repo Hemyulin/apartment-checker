@@ -65,18 +65,17 @@ const sendNotification = (message, currentTime) => {
 
     const notification = {
       message,
-      title: "New Apartment Offer Available",
     };
-
-    push.send(notification, (err, result) => {
-      if (err) {
-        console.error(
-          `[${currentTime}] Error sending notification: ${err.message}`
-        );
-      } else {
-        console.log(`[${currentTime}] Push notification sent successfully!`);
-      }
-    });
+    title: "New Apartment Offer Available",
+      push.send(notification, (err, result) => {
+        if (err) {
+          console.error(
+            `[${currentTime}] Error sending notification: ${err.message}`
+          );
+        } else {
+          console.log(`[${currentTime}] Push notification sent successfully!`);
+        }
+      });
   } catch (error) {
     console.error(
       `[${currentTime}] Error sending notification: ${error.message}`
