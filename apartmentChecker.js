@@ -1,5 +1,6 @@
 const puppeteer = require("puppeteer");
 const Pushover = require("pushover-notifications");
+require("dotenv").config();
 
 let currentTime;
 const previousOfferLinks = new Set();
