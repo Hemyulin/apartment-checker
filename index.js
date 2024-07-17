@@ -31,16 +31,22 @@ const main = async () => {
         return offerElements.map((element) => {
           const title = element.querySelector(".imageTitle").textContent.trim();
           const address = element.querySelector(".address").textContent.trim();
+          const sizeText = element
+            .querySelector(".main-property-value.main-property-size")
+            .textContent.trim();
+          const size = parseFloat(
+            sizeText.replace(",", ".").replace(" m²", "")
+          );
           const link = element
             .querySelector('a[title="Details"]')
             .getAttribute("href");
-          return { title, address, link };
+          return { title, address, size, link };
         });
       });
 
       for (const offer of offers) {
-        if (!previousOfferLinks.has(offer.link)) {
-          const message = `${offer.title}\n${offer.address}\nLink: https://www.wbm.de${offer.link}`;
+        if (offer.size >= 70 && !previousOfferLinks.has(offer.link)) {
+          const message = `${offer.title}\nSize: ${offer.size} m²\n${offer.address}\nLink: https://www.wbm.de${offer.link}`;
           console.log(`[${currentTime}] New apartment found: ${message}`);
           sendNotification(message, currentTime);
           previousOfferLinks.add(offer.link);
@@ -66,17 +72,18 @@ const sendNotification = (message, currentTime) => {
 
     const notification = {
       message,
+      title: "New Apartment Offer Available",
     };
-    title: "New Apartment Offer Available",
-      push.send(notification, (err, result) => {
-        if (err) {
-          console.error(
-            `[${currentTime}] Error sending notification: ${err.message}`
-          );
-        } else {
-          console.log(`[${currentTime}] Push notification sent successfully!`);
-        }
-      });
+
+    push.send(notification, (err, result) => {
+      if (err) {
+        console.error(
+          `[${currentTime}] Error sending notification: ${err.message}`
+        );
+      } else {
+        console.log(`[${currentTime}] Push notification sent successfully!`);
+      }
+    });
   } catch (error) {
     console.error(
       `[${currentTime}] Error sending notification: ${error.message}`
